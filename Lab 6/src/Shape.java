@@ -95,7 +95,17 @@ public abstract class Shape implements Comparable<Shape>
 	@Override
 	public int compareTo(Shape s)
 	{
-		// TODO: complete this...
+		int sol;
+		if (this.compareTo(s) > 0) {
+			sol = 1;
+		}
+		else if (this.compareTo(s) < 0) {
+			sol = -1;
+		}
+		else {
+			sol = 0;
+		}
+		return sol;
 	}
 
 	/**
@@ -129,6 +139,6 @@ public abstract class Shape implements Comparable<Shape>
 	@Override
 	public String toString()
 	{
-		// TODO: complete this...
+		return String.format("%s\t ID = %s\t area = %f.3\t perimeter = %f.3", this.getShapeType(), this.getId(),this.getArea(), this.getPerimeter());
 	}
 }
