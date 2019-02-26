@@ -53,7 +53,7 @@ public class ShapeAreaComparator implements Comparator<Shape>
 	 */
 	public boolean equals(Shape s1, Shape s2)
 	{
-		if (compare(s1,s2) == 0) {
+		if (compare(s1, s2) == 0) {
 			return true;
 		}
 		else {
