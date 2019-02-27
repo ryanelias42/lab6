@@ -54,7 +54,7 @@ public class ShapeSorterTest
 		
 		sorter.sortShapes();
 		String ex = sorter.toString();
-		Assert.assertEquals(ex,"Rectangle:\t ID = c\t area = 6.000\t perimeter = 10.000Square:\t ID = b\t area = 16.000\t perimeter = 16.000Square:\t ID = a\t area = 25.000\t perimeter = 20.000");
+		Assert.assertEquals("Rectangle:\t ID = c\t area = 6.000\t perimeter = 10.000Square:\t ID = b\t area = 16.000\t perimeter = 16.000Square:\t ID = a\t area = 25.000\t perimeter = 20.000",ex);
 	}
 
 	/**

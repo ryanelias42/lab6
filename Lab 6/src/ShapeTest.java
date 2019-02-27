@@ -33,7 +33,11 @@ public class ShapeTest
 	@Test
 	public void RectangleTest()
 	{
-		// TODO: complete this...
+		Shape rec = new Rectangle("rec1", 5,4);
+		Assert.assertEquals("Rectangle area incorrect.", 20.0, rec.getArea(), 0.0001);
+		Assert.assertEquals("Rectangle perimeter incorrect.",18.0,rec.getPerimeter(),0.0001);
+		Assert.assertEquals("Rectangle type incorrect.", "Rectangle", rec.getShapeType());
+		Assert.assertEquals("Shape ID incorrect.","rec1",rec.getId());
 	}
 
 	/**
@@ -42,7 +46,11 @@ public class ShapeTest
 	@Test
 	public void TriangleTest()
 	{
-		// TODO: complete this...
+		Shape tri = new EquilateralTriangle("tri1",4.81);
+		Assert.assertEquals("Triangle area incorrect.", 10.018225172248574, tri.getArea(),0.0001);
+		Assert.assertEquals("Triangle perimeter incorrect.", 14.43, tri.getPerimeter(),0.0001);
+		Assert.assertEquals("Triangle type incorrect","Equilateral Triangle", tri.getShapeType());
+		Assert.assertEquals("Triangle ID incorrect.","tri1",tri.getId());
 	}
 
 	/**
@@ -51,7 +59,11 @@ public class ShapeTest
 	@Test
 	public void TrapezoidTest()
 	{
-		// TODO: complete this...
+		Shape trap = new Trapezoid("trap1",5,4,8,5);
+		Assert.assertEquals("Trapezoid area incorrect.",26,trap.getArea(),0.0001);
+		Assert.assertEquals("Trapezoid perimeter incorrect.",22, trap.getPerimeter(),0.0001);
+		Assert.assertEquals("Trapezoid type incorrect.", "Trapezoid",trap.getShapeType());
+		Assert.assertEquals("Trapezoid ID incorrect.", "trap1",trap.getId());
 	}
 
 	/**
@@ -83,7 +95,11 @@ public class ShapeTest
 	@Test
 	public void CircleTest()
 	{
-		// TODO: complete this...
+		Shape circle = new Circle("cir1", 5);
+		Assert.assertEquals("Circle area incorrect.", 78.53981633974483, circle.getArea(),0.0001);
+		Assert.assertEquals("Circle perimeter incorrect.",31.41592653589793,circle.getPerimeter(),0.0001);
+		Assert.assertEquals("Circle type incorrect.", "Circle", circle.getShapeType());
+		Assert.assertEquals("Circle ID incorrect.", "cir1", circle.getId());
 	}
 
 	/**
@@ -92,7 +108,9 @@ public class ShapeTest
 	@Test
 	public void ShapeToStringTest()
 	{
-		// TODO: complete this...
+		Shape sqr = new Square("sqr", 3);		
+		Assert.assertEquals("Shape toString incorrect.", "Square:\t ID = sqr\t area = 9.000\t perimeter = 12.000",sqr.toString());
+		
 	}
 
 	//==================================================================================================================
@@ -130,7 +148,18 @@ public class ShapeTest
 	@Test
 	public void ComparePerimeterTest()
 	{
-		// TODO: complete this...
+		//test equal perimeter
+		Shape s1 = new Square ("s1", 5);
+		Shape r1 = new Rectangle("r1", 9, 1);
+		ShapePerimeterComparator pc = new ShapePerimeterComparator();
+		Assert.assertEquals("ShapePerimeterComparator should find shapes equal.", 0, pc.compare(s1,r1));
+		Assert.assertTrue("ShapePerimeterComparator should find shapes equal", pc.equals(s1,r1));
+		//test unequal perimeter
+		Shape s2 = new Square ("s2", 5);
+		Shape s3 = new Square ("s3", 4);
+		Assert.assertEquals("ShapePerimeterComparator should find shapes unequal.",1, pc.compare(s2,s3));
+		Assert.assertFalse("ShapePerimeterComparator should find shapes unequal.", pc.equals(s2,s3));
+		
 	}
 
 	/**
@@ -139,6 +168,21 @@ public class ShapeTest
 	@Test
     public void NaturalCompareTest()
     {
-		// TODO: complete this...
+		//test equal areas, equal perimeters
+		Shape a = new Square("a", 5);
+		Shape b = new Rectangle("b", 5,5);
+		Assert.assertEquals("compareTo should return 0.",0,a.compareTo(b));
+		//test equal areas, unequal perimeters
+		Shape c = new Square("c", 10);
+		Shape d = new Rectangle("d", 50,2);
+		Assert.assertEquals("compareTo should return -1.",-1,c.compareTo(d));
+		//test unequal areas, equal perimeters
+		Shape e = new Square("e", 4);
+		Shape f = new Rectangle("f", 6, 2);
+		Assert.assertEquals("compareTo should return 1",1,e.compareTo(f));
+		//test unequal areas, unequal perimeters
+		Shape g = new Square("g", 6);
+		Shape h = new Rectangle("h", 6,4);
+		Assert.assertEquals("compareTo should return 1.",1,g.compareTo(h));
     }
 }
