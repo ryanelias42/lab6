@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,7 +44,17 @@ public class ShapeSorterTest
 	@Test
 	public void SortShapesDefaultTest()
 	{
-		// TODO: complete this...
+		ShapeSorter sorter = new ShapeSorter();
+		Shape a = new Square("a",5);
+		Shape b = new Square("b", 4);
+		Shape c = new Rectangle("c",2,3);
+		sorter.addShape(a);
+		sorter.addShape(b);
+		sorter.addShape(c);
+		
+		sorter.sortShapes();
+		String ex = sorter.toString();
+		Assert.assertEquals(ex,"Rectangle:\t ID = c\t area = 6.000\t perimeter = 10.000Square:\t ID = b\t area = 16.000\t perimeter = 16.000Square:\t ID = a\t area = 25.000\t perimeter = 20.000");
 	}
 
 	/**
@@ -51,7 +63,14 @@ public class ShapeSorterTest
 	@Test
 	public void SortShapesAreaTest()
 	{
-		// TODO: complete this...
+		ShapeSorter sorter = new ShapeSorter();
+		Shape a = new Square("a",5);
+		Shape b = new Square("b", 3);
+		sorter.addShape(a);
+		sorter.addShape(b);
+		sorter.sortShapes(new ShapeAreaComparator());
+		String ans = sorter.toString();
+		Assert.assertEquals(ans,"Square:\t ID = b\t area = 9.000\t perimeter = 12.000Square:\t ID = a\t area = 25.000\t perimeter = 20.000");
 	}
 
 	/**
@@ -60,7 +79,15 @@ public class ShapeSorterTest
 	@Test
 	public void SortShapesPerimeterTest()
 	{
-		// TODO: complete this...
+		ShapeSorter sorter = new ShapeSorter();
+		Shape c = new Rectangle ("c",3,2);
+		Shape d = new Square ("d", 2);
+		
+		sorter.addShape(c);
+		sorter.addShape(d);
+		sorter.sortShapes(new ShapePerimeterComparator());
+		String ans = sorter.toString();
+		Assert.assertEquals(ans,"Square:\t ID = d\t area = 4.000\t perimeter = 8.000Rectangle:\t ID = c\t area = 6.000\t perimeter = 10.000");
 	}
 
 	/**
@@ -69,6 +96,8 @@ public class ShapeSorterTest
 	@Test
 	public void ToStringTest()
 	{
-		// TODO: complete this...
+		Shape x = new EquilateralTriangle("x", 6);
+		String xx = x.toString();
+		Assert.assertEquals(xx, "Equilateral Triangle:\t ID = x\t area = 15.588\t perimeter = 18.000");
 	}
 }

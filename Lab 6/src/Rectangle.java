@@ -8,6 +8,12 @@ public class Rectangle extends Polygon {
 		super(id);
 		this.height = height;
 		this.width = width;
+		sideLengths.add(width);
+		sideLengths.add(width);
+		sideLengths.add(height);
+		sideLengths.add(height);
+		
+		
 	}
 	
 	@Override
@@ -16,6 +22,6 @@ public class Rectangle extends Polygon {
 	}
 	@Override
 	public String getShapeType() {
-		return "rectangle";
+		return "Rectangle";
 	}
 }
