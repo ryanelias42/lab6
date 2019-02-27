@@ -184,5 +184,7 @@ public class ShapeTest
 		Shape g = new Square("g", 6);
 		Shape h = new Rectangle("h", 6,4);
 		Assert.assertEquals("compareTo should return 1.",1,g.compareTo(h));
+		//fixed missing test pointed out by webcat
+		Assert.assertEquals("compareTo should return 1.",1,d.compareTo(c));
     }
 }
